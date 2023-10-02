@@ -23,7 +23,7 @@ function App() {
           <Route exact path='/' element={<Netflix/>} />
           <Route exact path='/movie' element={<MoviePage/>} />
         </Routes>
-        <Header/>
+       
       </BrowserRouter>
     
   );

@@ -20,11 +20,10 @@ const HeaderContainer =styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 4rem;
+    padding: 0 2rem;
     .logo{
       img{
         height: 3rem;
-        
         cursor: pointer;
       }
     }
