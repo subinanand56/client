@@ -81,10 +81,10 @@ position: relative;
     padding: 0 25rem;
    }
    h4{
-    margin-top: -1.5rem;
+    margin-top: 0.2rem;
    }
    h6{
-    margin-top: -1.5rem;
+    margin-top: -0.1 rem;
 
    }
    .form{

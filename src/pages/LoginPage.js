@@ -7,22 +7,22 @@ import {signInWithEmailAndPassword,onAuthStateChanged} from 'firebase/auth'
 import {  useNavigate } from 'react-router-dom'
 
 const LoginPage = () => {
-  const [email, setemail] = useState("")
-  const [password,setpassword] = useState("")
+  const [email, setemail] = useState("");
+  const [password,setpassword] = useState("");
 
   const navigate = useNavigate()
 
   const handleLogin =async () =>{
     try {
-      await signInWithEmailAndPassword(firebaseAuth,email,password)
+      await signInWithEmailAndPassword(firebaseAuth,email,password);
     } catch (error) {
       console.log(error);
     }
   }
 
   onAuthStateChanged(firebaseAuth,(currentUser) => {
-    if (currentUser) navigate ("/")
-  })
+    if (currentUser) navigate ("/");
+  });
 
   return (
     <Wrapper>
