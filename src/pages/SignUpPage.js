@@ -2,10 +2,29 @@ import React ,{useState} from 'react'
 import Header from '../components/Header'
 import Backgroundimage from '../components/Backgroundimage'
 import styled from 'styled-components'
+import { firebaseAuth } from '../utils/firebase-config'
+import { createUserWithEmailAndPassword ,onAuthStateChanged} from 'firebase/auth'
+import {  useNavigate } from 'react-router-dom'
+
 
 const SignUpPage = () => {
   const [showPassword,setShowpassword]=useState(false)
+  const [formValues, setformValues] = useState({email: "", password :""})
 
+  const navigate = useNavigate()
+
+  const handleSignIn= async()=>{
+    try {
+      const{email ,  password} = formValues
+      await createUserWithEmailAndPassword(firebaseAuth, email ,password)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  onAuthStateChanged(firebaseAuth,(currentUser) => {
+    if (currentUser) navigate ('/')
+  })
   return (
     <Container>
       <Backgroundimage/>
@@ -20,13 +39,13 @@ const SignUpPage = () => {
       <div className='form'>
         {
           showPassword ? (
-            <input type='password' placeholder='password' name='password' />
-          ): (<input type='email' placeholder='mail address' name='email' />
+            <input type='password' placeholder='password' name='password'value={formValues.password} onChange={(e)=>setformValues({...formValues,[e.target.name] : e.target.value})} />
+          ): (<input type='email' placeholder='email address' name='email' value={formValues.email} onChange={(e)=>setformValues({...formValues,[e.target.name] : e.target.value})}/>
           )}
           {
           !showPassword ? (
             <button onClick={()=> setShowpassword(true)}>Get Started</button>
-            ) : <button>Sign Up</button>
+            ) : <button onClick={handleSignIn}>Sign Up</button>
           }
       </div>
     </div>
