@@ -1,11 +1,13 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState , useEffect } from 'react'
 import TopNav from '../components/TopNav'
 import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom'
+import{useDispatch , useSelector} from 'react-redux'
 import { AiOutlineAlipayCircle  } from 'react-icons/ai'
 import {FaPlay} from 'react-icons/fa'
 import Card from '../components/Card'
+import { fetchMovies, getGenres } from '../store'
 
 
 const Netflix = () => {
@@ -13,12 +15,29 @@ const Netflix = () => {
   const [isScrolled, setIsScrolled] = useState(false)
 
   const navigate = useNavigate()
+
+  const movies =useSelector((state)=> state.netflix.movies)
+  const generesLoaded = useSelector((state)=>state.netflix.generesLoaded)
+
+  const dispatch =useDispatch()
+
+  useEffect(()=> {
+    dispatch(getGenres())
+  },[]);
+
+  useEffect(()=> {
+    if(generesLoaded){
+      dispatch(fetchMovies({type:"all"}))
+    }
+  });
     
   window.onscroll =() =>{
     setIsScrolled(window.pageYOffset === 0 ? false : true )
     return () => (window.onscroll = null)
   }
-  console.log(isScrolled);
+ 
+  console.log(movies);
+
   return (
     <HeroContainer>
       <div className='hero'>
