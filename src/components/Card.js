@@ -8,7 +8,7 @@ import {BiChevronDown} from 'react-icons/bi'
 import { BsCheck } from 'react-icons/bs'
 
 
-const Card = () => {
+const Card = ({movieData}) => {
 
     const [onHovered, setonHovered] = useState(false)
     const navigate = useNavigate()
@@ -18,17 +18,17 @@ const Card = () => {
     
     <CardContainer onMouseEnter={()=>setonHovered(true)}
     onMouseLeave={()=>setonHovered(false)}>
-        <img src='https://resize.indiatvnews.com/en/resize/newbucket/400_-/2022/01/the-batman-movie-1643275664.jpg' alt='movie poster' onClick={()=> navigate('/player')} />
+        <img src={`https://image.tmdb.org/t/p/w500${movieData.image}`} alt='movie poster' onClick={()=> navigate('/player')} />
         {
             onHovered &&(
                 <div className='hover'>
                     <div className='image-video-wrapper'>
-                    <img src='https://resize.indiatvnews.com/en/resize/newbucket/400_-/2022/01/the-batman-movie-1643275664.jpg' alt='movie poster' onClick={()=> navigate('/player')} />
+                    <img src={`https://image.tmdb.org/t/p/w500${movieData.image}`} alt="movie poster" onClick={()=> navigate('/player')} />
                 <video src='https://imdb-video.media-imdb.com/vi3348546073/1434659607842-pgv4ql-1651186731527.mp4?Expires=1696523437&Signature=mA6a8mE6OeI8Qbi8hFO2il-OMy1dyixGO~SJDKDm45IEPIc54oDh-rEzcwXfCOAos3PjlNHaSKMqTCdzyboY2r-5ZnaWHPW~Fs4vXH5vpdExAa7ZYwVsWYo~JRfdF0z3xR8fS0GwqJbvJa-5~Z6h9HSMR3uOkolxCchpCFzvzh-8cX3oBEx~0xfNE9pS2FLkJv8wBZO9xW0~S14Huh4rXUflyxAReMpMLsqcjQw5I~AochOgh6VxvjuYJ6~EmmMAFUtfQcSYL8dlarZnYzD2ID9qphGxbth7ftjKIgdtoVrZNT-iYpVaLvJRRefK5Cwsgy~8J7Za8toto4alJ9ibng__&Key-Pair-Id=APKAIFLZBVQZ24NQH3KA' 
         autoPlay loop controls  />
                     </div>
                     <div className='info-container'>
-                        <h3 className='moviename' onClick={()=>navigate('/player')}>Batman</h3>
+                        <h3 className='moviename' onClick={()=>navigate('/player')}>{movieData.name}</h3>
                         <div className='icons'>
                             <div className='controls'>
                                 <IoPlayCircleSharp title='play' onClick={()=>navigate('/player')}/>
@@ -43,10 +43,9 @@ const Card = () => {
                         </div>
                         <div className='genre'>
                             <ul>
-                                <li>Action</li>
-                                <li>Action</li>
-                                <li>Action</li>
-                                <li>Action</li>
+                                {movieData.genres.map((genre)=>{
+                                    <li>{genre}</li>
+                                })}
                             </ul>
                         </div>
                     </div>
@@ -64,7 +63,7 @@ width: 230px;
 height: 100%;
 cursor: pointer;
 position: relative;
-background-color: red;
+
 img{
     border-radius: 0.2rem;
     width: 100%;
