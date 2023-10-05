@@ -141,7 +141,7 @@ img{
             display: flex;
             gap: 1rem;
             li{
-                padding: 0.5rem;
+                padding: 0.rem;
                 &:first-of-type{
                     list-style-type: none;
                 }

@@ -34,10 +34,10 @@ const PlayerContainer =styled.div`
       color: white;
     }
   }
-  /* video{
+  video{
     height: 100%;
     width: 100%;
-  } */
+  }
 }
 `
 export default Player
