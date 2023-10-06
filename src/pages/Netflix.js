@@ -46,7 +46,7 @@ const Netflix = () => {
       <img className='background-image' src='https://occ-0-2794-2219.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABRDQOzGC_rInp4gFvqFPDF3mcWchowjepe5uTldav_Sx1QgJlpJG-ATT_PcYJbF-y5AtlC9koSScBJPATb4JET65SrkrgOl92SGl.jpg?r=c9b' alt='hero image' />
       <div className='container'>
         <div className='title'> 
-        <h1>Spiderman</h1>
+        <h1>Spiderman -No <br/>Way Home</h1>
         <p>When his loved ones are put at risk, Peter Parker asks Doctor Strange to restore his secret — and accidentally sets off a disaster of epic proportions.</p>
         </div>
         <div className='buttons'>
@@ -79,9 +79,8 @@ background-color: black;
     .title{
       h1{
         margin-left: 3rem;
-        text-transform: uppercase;
-        font-size: 73px;
-        background: -webkit-linear-gradient(#eee,rgb(128,13,13));
+        font-size: 60px;
+        background: -webkit-linear-gradient(#FFFFFF,rgb(255,255,255 ));
         -webkit-background-clip:text;
         -webkit-text-fill-color: transparent;
       }
